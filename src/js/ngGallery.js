@@ -27,7 +27,7 @@ angular.module('jkuri.gallery', [])
   	$templateCache.put(template_url,
 	'<div class="{{ baseClass }}">' +
 	'  <div ng-repeat="i in images">' +
-	'    <img ng-src="{{ i.thumb }}" class="{{ thumbClass }}" ng-click="openGallery($index)" alt="Image {{ $index + 1 }}" />' +
+	'    <img ng-src="{{ i.thumb }}" class="{{ thumbClass }} a" ng-click="openGallery($index)" alt="Image {{ $index + 1 }}" />' +
 	'  </div>' +
 	'</div>' +
 	'<div class="ng-overlay" ng-show="opened">' +
@@ -53,10 +53,11 @@ angular.module('jkuri.gallery', [])
 		restrict: 'EA',
 		scope: {
 			images: '=',
-			thumbsNum: '@'
+			thumbsNum: '@',
+			ondelete : '='
 		},
 		templateUrl: function(element, attrs) {
-        		return attrs.templateUrl || defaults.templateUrl;
+        		return attrs.templateurl || defaults.templateUrl;
     		},
 		link: function (scope, element, attrs) {
 			setScopeValues(scope, attrs);
